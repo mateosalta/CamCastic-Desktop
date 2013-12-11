@@ -1,4 +1,4 @@
-Porting following https://wiki.ubuntu.com/Novacut/GStreamer1.0
+Porting This  http://sourceforge.net/projects/camdesk/?source=dlp (cool app from Mike, give him the money) following https://wiki.ubuntu.com/Novacut/GStreamer1.0
 
 Many things are not yet working.
 Broken:
