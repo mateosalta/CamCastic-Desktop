@@ -75,6 +75,7 @@ class Player(object):
             self.prop_win.show()
         except:
             self.prop_win = Gtk.Window(Gtk.WindowType.TOPLEVEL)
+            self.prop_win.set_position(Gtk.WindowPosition.CENTER)
             self.prop_win.set_decorated(False)
             self.prop_win.set_title("Properties")
             self.prop_win.set_size_request(320, 120)
