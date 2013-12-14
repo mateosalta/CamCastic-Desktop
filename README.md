@@ -1,16 +1,8 @@
-Porting This  http://sourceforge.net/projects/camdesk/?source=dlp (cool app from Mike, give him the money) following https://wiki.ubuntu.com/Novacut/GStreamer1.0
+CamCastic-Desktop is a Camera window for your linux desktop.
 
-Many things are not yet working.
-Broken:
--video appears in new window ~
--no settings window yet
+This project aims to use the latest pygi, gtk3, gstreamer 1.0, python3 compatiblilty. So as to be compatible with newer linux desktops that are moving away from PyGTK.
 
-What has been done:
-- Changes folowing the porting guide
-- All indents are using four spaces even on line breaks (or python3 complains)
+Orginally ported from this:  http://sourceforge.net/projects/camdesk/?source=dlp  
+Although there have been siginificant changes in the code base.
 
-What needs to be done:
-- somehow connect the video to widget
-- settings window is broke, debug and fix
-- anything else
-- look for and implement new stuff (talk to creator?)
+If you like it you can help out in coding, spread the word, Or you can donate at: https://pledgie.com/campaigns/23296
