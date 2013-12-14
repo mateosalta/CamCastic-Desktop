@@ -18,15 +18,62 @@ from gi.repository import Gdk
 
 Gst.init(None)
 
+from gi.repository import Gtk
+
+class StatusIcon(Gtk.StatusIcon):
+    def __init__(self, rootwin):
+        Gtk.StatusIcon.__init__(self)
+        self.rootwin = rootwin
+        self.set_from_stock(Gtk.STOCK_HOME) 
+        self.connect("popup-menu", self.right_click_event)
+
+    def right_click_event(self, icon, button, time):
+        self.menu = Gtk.Menu()
+ 
+        about = Gtk.MenuItem()
+        about.set_label("About")
+        about.connect("activate", self.show_about_dialog)
+
+        settings = Gtk.MenuItem()
+        settings.set_label("Settings")
+        settings.connect("activate", self.rootwin.properties_wrap)
+
+        quit = Gtk.MenuItem()
+        quit.set_label("Quit") 
+        quit.connect("activate", self.rootwin.quit)
+ 
+        self.menu.append(settings)
+        self.menu.append(about)
+        self.menu.append(quit)
+ 
+        self.menu.show_all()
+ 
+        def pos(menu, icon):
+                return (Gtk.StatusIcon.position_menu(menu, icon))
+ 
+        self.menu.popup(None, None, pos, self, button, time)
+
+    def show_about_dialog(self, widget):
+        about_dialog = Gtk.AboutDialog()
+
+        about_dialog.set_destroy_with_parent(True)
+        about_dialog.set_name("CamCastic-Desktop")
+        about_dialog.set_version("0.1")
+        about_dialog.set_authors(["Andrew King","Mateo Salta"])
+
+        about_dialog.run()
+        about_dialog.destroy()
+
 class Player(object):
     def __init__(self):
+        self.win = Gtk.Window()
+        self.status_icon = StatusIcon(self)
         self.resolution = {
             'width' : Gdk.get_default_root_window().get_width(),
             'height' : Gdk.get_default_root_window().get_height()
             }
         self.height = int(self.resolution['height']/3)
         self.width = int(self.height/3*4)
-        self.win = Gtk.Window()
         self.win.connect('destroy', self.quit)
         self.win.set_default_size(self.width, self.height)
         self.win.set_decorated(False)
@@ -70,11 +117,15 @@ class Player(object):
             except KeyError:
                 pass
 
+    def properties_wrap(self, arg):
+        self.properties(None, None)
+
     def properties(self, widget, event):
         try:
             self.prop_win.show()
         except:
             self.prop_win = Gtk.Window(Gtk.WindowType.TOPLEVEL)
+            self.prop_win.set_position(Gtk.WindowPosition.CENTER)
             self.prop_win.set_decorated(False)
             self.prop_win.set_title("Properties")
             self.prop_win.set_size_request(320, 120)
