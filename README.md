@@ -5,4 +5,6 @@ This project aims to use the latest pygi, gtk3, gstreamer 1.0, python3 compatibl
 Orginally ported from this:  http://sourceforge.net/projects/camdesk/?source=dlp  
 Although there have been siginificant changes in the code base.
 
-If you like it you can help out in coding, spread the word, Or you can donate at: https://pledgie.com/campaigns/23296
+If you like it you can help out in coding, spread the word, Or you can donate.
+
+<a href='https://pledgie.com/campaigns/23296'><img alt='Click here to lend your support to: CamCastic Desktop and make a donation at pledgie.com !' src='https://pledgie.com/campaigns/23296.png?skin_name=chrome' border='0' ></a>
