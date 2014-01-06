@@ -24,7 +24,7 @@ class StatusIcon(Gtk.StatusIcon):
     def __init__(self, rootwin):
         Gtk.StatusIcon.__init__(self)
         self.rootwin = rootwin
-        self.set_from_stock(Gtk.STOCK_HOME) 
+        self.set_from_file("CamCastic.png") 
         self.connect("popup-menu", self.right_click_event)
 
     def right_click_event(self, icon, button, time):
@@ -209,7 +209,10 @@ class Player(object):
     def on_sync_message(self, bus, msg):
         if msg.get_structure().get_name() == 'prepare-window-handle':
             print('prepare-window-handle')
-            msg.src.set_property('force-aspect-ratio', True)
+            msg.src.set_property('force-aspect-ratio', False)
+            msg.src.set_property('handle-expose', False)
+            msg.src.set_property('draw-borders', True)
+            msg.src.set_property('double-buffer', False)
             msg.src.set_window_handle(self.xid)
             print('prepped')
 
