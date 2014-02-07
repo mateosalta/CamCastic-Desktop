@@ -8,3 +8,5 @@ Although there have been siginificant changes in the code base.
 If you like it you can help out in coding, spread the word, Or you can donate.
 
 <a href='https://pledgie.com/campaigns/23296'><img alt='Click here to lend your support to: CamCastic Desktop and make a donation at pledgie.com !' src='https://pledgie.com/campaigns/23296.png?skin_name=chrome' border='0' ></a>
+
+
